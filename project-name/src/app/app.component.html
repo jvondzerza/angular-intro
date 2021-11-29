@@ -1,0 +1,11 @@
+<form #friendForm="ngForm" (ngSubmit)="submit()">
+  {{ friendModel | json }}
+  <input required pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$" [class.error]="name.invalid && name.touched" name="name" [(ngModel)]="friendModel.name" placeholder="Name" type="text" #name="ngModel">
+  <input required pattern="^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$" [class.error]="surname.invalid && surname.touched" name="surname" [(ngModel)]="friendModel.surname" placeholder="Surname" type="text" #surname="ngModel">
+  <input required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" [class.error]="email.invalid && email.touched" name="email" [(ngModel)]="friendModel.email" placeholder="E-mail" type="text" #email="ngModel">
+  <input required pattern="(^\+[0-9]{2}|^\+[0-9]{2}\(0\)|^\(\+[0-9]{2}\)\(0\)|^00[0-9]{2}|^0)([0-9]{9}$|[0-9\-\s]{10}$)" [class.error]="phoneNumber.invalid && phoneNumber.touched" name="phoneNumber" [(ngModel)]="friendModel.phoneNumber" placeholder="Phone number" type="text" #phoneNumber="ngModel">
+  <select required [class.error]="language.invalid && language.touched" name="language" [(ngModel)]="friendModel.language" #language="ngModel">
+    <option *ngFor="let language of languages">{{language}}</option>
+  </select>
+  <button [disabled]="friendForm.form.invalid">Submit</button>
+</form>
