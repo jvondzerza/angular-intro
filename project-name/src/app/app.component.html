@@ -9,3 +9,12 @@
   </select>
   <button [disabled]="friendForm.form.invalid">Submit</button>
 </form>
+<ul>
+  <li *ngFor="let friend of allFriends">{{friend._name}} {{friend._surname}}
+    <ul>
+      <li>{{friend._email}}</li>
+      <li>{{friend._phoneNumber}}</li>
+      <li>{{friend._language}}</li>
+    </ul>
+  </li>
+</ul>
